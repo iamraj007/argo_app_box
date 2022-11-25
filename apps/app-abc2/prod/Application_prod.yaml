@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: web-app2-prod
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://gitlab.com/iamraj007/gitops-repo.git
+    targetRevision: HEAD
+    path: backend/apps/app-abc2/overlays/prod
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: prod
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

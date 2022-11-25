@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: web-app3-dev
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL:  https://gitlab.com/iamraj007/gitops-repo.git
+    targetRevision: HEAD
+    path: backend/apps/app-abc3/overlays/dev
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: dev
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
