@@ -1,0 +1,49 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: appbox-project
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+  labels:
+    Project_Poc: POC_PROJ
+    Env: POC
+spec:
+  description: Main Project for ArgoCD ProjectSpace app scope backend
+  sourceRepos:
+  - '*'
+  destinations:
+  - name: '*'
+    namespace: '*'
+    server: '*'
+  - name: '*'
+    namespace: '*'
+    server: https://kubernetes.default.svc
+#  - name: '*'
+#    namespace: '*'
+#    server: '*'
+  clusterResourceWhitelist:
+  - group: ''
+    kind: Namespace
+#  namespaceResourceBlacklist:
+#  - group: ''
+#    kind: ResourceQuota
+#  - group: ''
+#    kind: LimitRange
+#  - group: ''
+#    kind: NetworkPolicy
+  namespaceResourceWhitelist:
+  - group: '*'
+    kind: '*'
+#  - group: 'apps'
+#    kind: StatefulSet
+  orphanedResources:
+    warn: false
+  roles:
+  - name: read-my-appbox-project
+    description: Read-only privileges to appbox-project
+    policies:
+    - p, proj:appbox-project:appbox-project, applications, get, appbox-project/*, allow
+      #    - p, role:admin, applications, *, */*, allow
+    groups:
+    - my-oidc-group
