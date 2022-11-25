@@ -1,0 +1,57 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: abc-appbox-appset
+  namespace: argocd
+spec:
+  generators:
+  - list:
+      elements:
+      - appName: app-abc1
+        EnvName: dev
+        namespace: dev
+        clusterns: dev
+        clustername: https://kubernetes.default.svc
+      - appName: app-abc1
+        EnvName: prod
+        namespace: prod
+        clusterns: prod
+        clustername: https://kubernetes.default.svc
+      - appName: app-abc2
+        EnvName: dev
+        namespace: dev
+        clusterns: dev
+        clustername: https://kubernetes.default.svc
+      - appName: app-abc2
+        EnvName: prod
+        namespace: prod
+        clusterns: prod
+        clustername: https://kubernetes.default.svc
+      - appName: app-abc3
+        EnvName: dev
+        namespace: dev
+        clusterns: dev
+        clustername: https://kubernetes.default.svc
+      - appName: app-abc3
+        EnvName: prod
+        namespace: prod
+        clusterns: prod
+        clustername: https://kubernetes.default.svc
+  template:
+    metadata:
+      name: "{{appName}}-box-{{EnvName}}"
+    spec:
+      project: appbox-project
+      source:
+        repoURL: https://github.com/iamraj007/argo_app_box.git
+        targetRevision: HEAD
+        path: apps/{{appName}}/{{EnvName}}
+      destination:
+        server: "{{clustername}}"
+        namespace: "{{clusterns}}"
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+        - PruneLast=true
