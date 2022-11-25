@@ -1,2 +1,2 @@
-# argo_app_box
+# ArgoCD App box
 ArgoCD Apps with ApplicationSet Project &amp; Application
