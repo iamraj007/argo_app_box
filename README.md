@@ -2,6 +2,8 @@
 ArgoCD Apps with ApplicationSet Project &amp; Application
 
 
+```
+
 ├── ApplicationSet_main.yaml
 ├── apps
 │   ├── app-abc1
@@ -21,3 +23,4 @@ ArgoCD Apps with ApplicationSet Project &amp; Application
 │           └── Application_prod.yaml
 ├── ArgoAppProject.yaml
 └── README.md
+```
