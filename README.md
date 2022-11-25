@@ -3,7 +3,6 @@ ArgoCD Apps with ApplicationSet Project &amp; Application
 
 
 ```
-
 ├── ApplicationSet_main.yaml
 ├── apps
 │   ├── app-abc1
