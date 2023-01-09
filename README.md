@@ -1,6 +1,6 @@
 # ArgoCD App box
-ArgoCD Apps with ApplicationSet Project &amp; Application
-Use teh main file that should call the reamaning apps
+ArgoCD Apps with ApplicationSet Project &amp; Application.  
+Use the main file that should call the reamaning apps.
 
 ```
 ├── ApplicationSet_main.yaml
