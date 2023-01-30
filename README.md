@@ -1,6 +1,6 @@
 # ArgoCD App box
 ArgoCD Apps with ApplicationSet Project &amp; Application.  
-Use the main file that should call the reamaning apps while working with Argo.
+Use the main file that should call the reamaning apps while working with ArgoCD.
 
 Do checkout the below tree structure of folder for datails.
 
