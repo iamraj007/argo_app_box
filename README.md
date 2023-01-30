@@ -2,6 +2,8 @@
 ArgoCD Apps with ApplicationSet Project &amp; Application.  
 Use the main file that should call the reamaning apps.
 
+Do checkout the below tree structure of folder for datails.
+
 ```
 ├── ApplicationSet_main.yaml
 ├── apps
